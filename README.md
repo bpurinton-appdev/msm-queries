@@ -202,6 +202,15 @@ How many years ago was "Casablanca" released?
  - How many films did Morgan Freeman appear in?
     - Display the titles and years of the films.
 
+#### Hints for above
+
+Youngest director
+
+```ruby
+Director.where.not({ :dob => nil }).order({ :dob => :desc }).at(0).name
+Director.where.not({ :dob => nil }).order({ :dob => :desc }).at(0).dob..strftime("%B %e, %Y")
+```
+
 ## Drive the view templates with the data from the database
 
 Now that we've gotten our feet wet with using ActiveRecord to interact with the database, let's put it together with everything we've learned in the past — RCAV, `params`, HTML, etc — to make our app match the target.
