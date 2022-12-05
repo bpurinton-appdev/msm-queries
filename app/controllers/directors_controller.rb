@@ -39,6 +39,9 @@ class DirectorsController < ApplicationController
     @image = d.image
     @created = d.created_at
     @updated = d.updated_at
+
+    @list_of_films = Movie.where({ :director_id => @id })
+
     render({ :template => "director_templates/bio_page" })
   end
   
