@@ -4,6 +4,16 @@ class DirectorsController < ApplicationController
     render({ :template => "director_templates/index" })
   end
 
+  def director_old
+    @director = Director.where.not({ :dob => nil }).order({ :dob => :asc }).first
+    render({ :template => "director_templates/eldest" })
+  end
+
+  def director_young
+    @director = Director.where.not({ :dob => nil }).order({ :dob => :desc }).first
+    render({ :template => "director_templates/youngest" })
+  end
+
   def new_director
     name = params.fetch("input_name")
     dob = params.fetch("input_dob")
