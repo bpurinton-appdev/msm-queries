@@ -208,7 +208,12 @@ Youngest director
 
 ```ruby
 Director.where.not({ :dob => nil }).order({ :dob => :desc }).at(0).name
-Director.where.not({ :dob => nil }).order({ :dob => :desc }).at(0).dob..strftime("%B %e, %Y")
+
+Director.where.not({ :dob => nil }).order({ :dob => :desc }).at(0).dob.strftime("%B %e, %Y")
+
+tp Movie.where({ :director_id => Director.where("name LIKE ?", "%opp%").first.id }), "title", "year"
+
+tp Movie.where({ :id => Character.where({ :actor_id => Actor.where({ :name => "Morgan Freeman" }).at(0).id }).pluck(:movie_id) }), "title", "year"
 ```
 
 ## Drive the view templates with the data from the database
